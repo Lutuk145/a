@@ -5,7 +5,7 @@ def main():
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     sock.settimeout(3.0)
     
-    sock.sendto(b'DISCOVER', ('255.255.255.255', 2222))
+    sock.sendto(b'DISCOVER', ('<broadcast>', 2222))
     
     servers = set()
     
