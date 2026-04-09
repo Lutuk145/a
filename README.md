@@ -19,8 +19,6 @@ class UDPClient:
         servers = set()
         target = (self.broadcast_ip, self.port)
         
-        logging.info(f"Broadcasting to {target}")
-        
         try:
             self.sock.sendto(b'DISCOVER', target)
         except OSError as e:
@@ -32,7 +30,6 @@ class UDPClient:
                 data, addr = self.sock.recvfrom(1024)
                 if data == b'OFFER':
                     servers.add(addr[0])
-                    logging.info(f"OFFER from {addr[0]}")
             except socket.timeout:
                 break
             except Exception as e:
